@@ -1,0 +1,19 @@
+package com.spa.all.config.dbc;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+
+@Configuration
+@ConfigurationProperties(prefix = "r2dbc.db")
+public class R2dbcConfig {
+
+    r2dbc.db.driver = "mysql"
+	    r2dbc.db.protocol = "mysql"
+	    r2dbc.db.host = "localhost"
+	    r2dbc.db.port = "3306"
+	    r2dbc.db.user = "root"
+	    r2dbc.db.password = "1234"
+	    r2dbc.db.dbname = "todos"
+
+}

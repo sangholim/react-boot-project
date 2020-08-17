@@ -1,0 +1,13 @@
+package com.spa.all.todos.sql;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
+public class TodosQueryContainer {
+
+    public static final String getAllTodos = "SELECT * from todos";
+    // test
+    // public static final String addTodo = "INSERT INTO todos values (null, '"+ RandomStringUtils.randomAlphabetic(5)+"')";
+    public static final String addTodo = "INSERT INTO todos values (null, '";
+    public static final String close = "');";
+    
+}

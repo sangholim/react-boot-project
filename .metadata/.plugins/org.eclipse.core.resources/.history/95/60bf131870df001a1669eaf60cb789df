@@ -1,0 +1,27 @@
+package com.spa.all.todos.dao;
+
+import java.util.List;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.spa.all.todos.params.Todo;
+
+/**
+ * TODOS db에 접근하는 class
+ * web-flux 모듈은 dbcp를  처리하지 않기떄문에
+ * protoType으로 선언함..
+ * 하지만 실제로 머가 효율적인지는 모르기 떄문에
+ * 나중에 좀더 개발해보고 성능이 좋으면
+ * 부분적으로 singleton으로 처리할것
+ * @author HoYa
+ *
+ */
+@Component
+@Scope (value = "protoType")
+public class TodosDAO {
+
+    public List<Todo> getTodosList () {
+	
+    }
+}

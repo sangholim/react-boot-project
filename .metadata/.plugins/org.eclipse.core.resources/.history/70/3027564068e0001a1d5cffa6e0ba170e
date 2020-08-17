@@ -1,0 +1,7 @@
+spring.db.driver = "mysql"
+spring.db.protocol = "mysql"
+spring.db.host = "localhost"
+spring.db.port = "3306"
+spring.db.user = "root"
+spring.db.password = "1234"
+spring.db.dbname = "todos"

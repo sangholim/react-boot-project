@@ -1,0 +1,14 @@
+1568813613532	Move compilation unit
+1568813868474	Delete element
+1568896938156	Move compilation unit
+1568896976933	Rename package 'com.pro1.common.db'
+1568897009117	Rename type 'DataBase'
+1568897027808	Rename type 'HibernateDataSource'
+1568897034595	Rename type 'MyBatisDataSource'
+1568897200439	Infer generic type arguments
+1568897480593	Rename type 'CommonDBSessionVO'
+1568898154693	Infer generic type arguments
+1568899016740	Delete element
+1568904390186	Delete element
+1568904720793	Infer generic type arguments
+1568905224794	Delete element

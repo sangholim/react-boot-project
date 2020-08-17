@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="false"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value=""/>
+		<list key="findhistory">
+			<item value=" "/>
+			<item value="spring"/>
+			<item value=".."/>
+			<item value="&#x09;.option(ConnectionFactoryOptions.DRIVER, env.getProperty(&quot;r2dbc..db.driver&quot;))"/>
+			<item value="r2dbc.db.driver = &quot;mysql&quot;"/>
+			<item value="public static final String addTodo = &quot;INSERT INTO todos values (&quot;+ RandomStringUtils.random(10)+&quot;)&quot;;"/>
+			<item value="repo"/>
+			<item value="java.version"/>
+			<item value="getCafeQuery"/>
+			<item value="#"/>
+			<item value="cafeLevel"/>
+			<item value="sign_up"/>
+			<item value="cafeBoard"/>
+			<item value="list.j"/>
+			<item value="json"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="r2dbc"/>
+			<item value="."/>
+			<item value="r2dbc."/>
+			<item value="/cafe/manage"/>
+			<item value="long"/>
+			<item value=" ;"/>
+			<item value="&#x09;private long "/>
+			<item value="    private long"/>
+			<item value=" private long "/>
+			<item value="    private long "/>
+			<item value="&quot;&lt;"/>
+			<item value="    private String "/>
+			<item value="&#x09;"/>
+			<item value="\t"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1504"/>
+		<item key="DIALOG_Y_ORIGIN" value="98"/>
+		<item key="DIALOG_WIDTH" value="425"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="692"/>
+		<item key="DIALOG_Y_ORIGIN" value="362"/>
+	</section>
+</section>

@@ -1,0 +1,10 @@
+#r2dbc.db.driver=mysql
+#r2dbc.db.protocol=mysql
+#r2dbc.db.host=127.0.0.1
+#r2dbc.db.port=3306
+#r2dbc.db.user=root
+#r2dbc.db.password=1234
+#r2dbc.db.dbname=todos
+logging.level.org.springframework.transaction=TRACE
+logging.level.org.springframework.data.r2dbc.connectionfactory=DEBUG
+spring.r2dbc.url=r2dbc:mysql://localhost:3306/some_db?useUnicode=true&characterEncoding=utf8

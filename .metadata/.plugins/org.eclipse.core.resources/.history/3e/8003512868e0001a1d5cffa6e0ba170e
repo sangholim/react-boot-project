@@ -1,0 +1,73 @@
+package com.spa.all.config.dbc;
+
+import org.reactivestreams.Publisher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+
+import io.r2dbc.spi.Connection;
+import io.r2dbc.spi.ConnectionFactories;
+import io.r2dbc.spi.ConnectionFactory;
+import io.r2dbc.spi.ConnectionFactoryOptions;
+
+@Configuration
+@PropertySource ("classpath:application.properties")
+public class MysqlConfig implements DataBaseConfig {
+
+    @Autowired
+    private Environment env;
+    private ConnectionFactory connectionFactory;
+
+    /**
+     * ConnectionFactory : Connection을 생성하는 팩토리 
+     * ConnectionFactories : ConnectionFactory를 검색해서 제공하는 유틸리티 
+     * Connection : 데이터베이스에 대한 커넥션 
+     * Statement : 실행할 SQL
+     * Batch : 배치로 실행할 SQL 
+     * Result : 쿼리 실행 결과
+     */
+    @Override
+    public void setDataBaseConfig() {
+	/*
+	 * String url =scheme:driver:protocol://authority/path?query 
+	 * url 양식 
+	 * scheme : URL이 유효한 R2DBC URL임을 지정한다. 유효한 스킴은 r2dbc와 r2dbcs(SSL 용)이다. 
+	 * driver : 드라이버를 지정한다.
+	 * protocol : 드라이버에 따라 프로토콜 정보를 지정한다(선택). 
+	 * authority : 접속할 DB와 인증 정보를 포함한다. 
+	 * path : 초기 스카마나 데이터베이스 이름을 지정한다(선택). 
+	 * query : 추가 설정 옵션을 전달할 때 사용한다(선택).
+	 */
+	/*
+	 * spring.db.driver = "mysql"
+            spring.db.protocol = "mysql"
+            spring.db.host = "localhost"
+            spring.db.port = "3306"
+            spring.db.user = "root"
+            spring.db.password = "1234"
+            spring.db.dbname = "todos"
+
+	 */
+	connectionFactory = ConnectionFactories.get(ConnectionFactoryOptions.builder()
+		.option(ConnectionFactoryOptions.DRIVER, env.getProperty("spring.db.driver"))
+		.option(ConnectionFactoryOptions.PROTOCOL, env.getProperty("spring.db.protocol"))
+		.option(ConnectionFactoryOptions.HOST, env.getProperty("spring.db.host"))
+		.option(ConnectionFactoryOptions.PORT, Integer.parseInt(env.getProperty("spring.db.port")))
+		.option(ConnectionFactoryOptions.USER, env.getProperty("spring.db.user"))
+		.option(ConnectionFactoryOptions.PASSWORD, env.getProperty("spring.db.password"))
+		.option(ConnectionFactoryOptions.DATABASE, env.getProperty("spring.db.dbname")).build());
+    }
+
+    /**
+     * db에 세션 접속하는 로직
+     * 
+     * @return
+     */
+    public Publisher<? extends Connection> createConnection() {
+	return connectionFactory.create();
+    }
+}

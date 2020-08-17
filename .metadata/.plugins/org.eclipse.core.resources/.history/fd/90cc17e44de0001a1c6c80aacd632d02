@@ -1,0 +1,65 @@
+package com.spa.all.todos.web;
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.spa.all.config.RouteHandler;
+import com.spa.all.config.dbc.MysqlConfig;
+import com.spa.all.todos.sql.TodosQueryContainer;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Component
+@Scope(value = "prototype")
+public class TodosHandler implements RouteHandler {
+
+    @Autowired
+    private MysqlConfig mysqlConfig;
+    
+    /**
+     * todosList 가져오는 query 반드시 Flux Class로 반환
+     * @param request
+     * @return
+     */
+    public Mono<ServerResponse> todosList(ServerRequest request) {
+	Flux<HashMap<Object, Object>> flux = Flux.from(mysqlConfig.createConnection()).concatMap(connection -> 
+	// database 접근후 아래와 같은 sql 질의후 처리
+	Flux.from(connection.createStatement(TodosQueryContainer.getAllTodos).execute()).concatMap(result ->
+	// database 질의한 결과를 MAP으로 재가공
+	result.map((row, rowMetadata) -> { 
+	    HashMap<Object, Object> item = new HashMap<>();
+	    item.put("id", row.get("id", Long.class));
+	    item.put("text", row.get("text", String.class));
+	    item.put("checked", false);
+	    return item;
+	})).doFinally((st) -> {
+	    // 처리가 끝나고 연결 종료
+	    connection.close();
+	}));
+	
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(flux, HashMap.class);
+    }
+
+    /**
+     * todo 추가
+     * @param request
+     * @return
+     */
+    public Mono<ServerResponse> insertTodo(ServerRequest request) {
+	Flux<Object> flux = Flux.from(mysqlConfig.createConnection()).concatMap(connection -> 
+	// database 접근후 아래와 같은 sql 질의후 처리
+	Flux.from(connection.createStatement(TodosQueryContainer.addTodo).execute()).doFinally((st) -> {
+	    // 처리가 끝나고 연결 종료
+	    connection.close();
+	}));
+	
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(flux, HashMap.class);
+    }
+}

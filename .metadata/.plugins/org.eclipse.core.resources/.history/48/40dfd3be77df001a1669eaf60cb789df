@@ -1,0 +1,44 @@
+package com.spa.all.todos.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.RequestPredicates;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.spa.all.config.RouteConfig;
+import com.spa.all.config.RouteHandler;
+
+import reactor.core.publisher.Mono;
+
+@Configuration
+public class TodosRouteConfig implements RouteConfig {
+
+   @Autowired private TodosHandler todoHandler; 
+    
+    @Bean
+    public Mono<ServerResponse> routeInit(ServerRequest request) {
+	TodosHandler todosHandler = (TodosHandler) handler;
+	RouterFunctions.route(RequestPredicates.GET("/todosList").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),todosHandler::todosList);
+	
+	todosHandler.todosList(request);
+	return RouterFunctions.route(
+		RequestPredicates.GET("/todosList").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
+		todosHandler::todosList);
+    }
+    /*
+    @Bean
+    public RouterFunction<ServerResponse> routeInit(RouteHandler handler) {
+	TodosHandler todosHandler = (TodosHandler) handler;
+	RouterFunctions.route(RequestPredicates.GET("/todosList").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),todosHandler::todosList);
+	
+	return RouterFunctions.route(
+		RequestPredicates.GET("/todosList").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
+		todosHandler::todosList);
+    }
+    */
+}
