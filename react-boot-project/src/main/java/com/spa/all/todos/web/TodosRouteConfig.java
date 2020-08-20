@@ -23,6 +23,9 @@ public class TodosRouteConfig implements RouteConfig {
 			todosHandler::todosList)
 		.andRoute(
 			RequestPredicates.GET("/insertTodo").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
-			todosHandler::insertTodo);
+			todosHandler::insertTodo)
+		.andRoute(
+			RequestPredicates.GET("/deleteTodo").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+			todosHandler::deleteTodo);
     }
 }

@@ -8,6 +8,15 @@ public class Todo {
 
     private boolean checked;
 
+    public Todo() {
+	// TODO Auto-generated constructor stub
+    }
+    
+    public Todo(String text) {
+	this.text = text;
+    }
+    
+    
     public long getId() {
 	return id;
     }
