@@ -7,9 +7,27 @@
  */
 import React, { Component} from 'react';
 import TodosManager from './components/todos/TodosManager'
+import LoginTemplate from './components/login/LoginTemplate'
 
 class App extends Component {
+
+  state = {
+    currentCmp : 'login'
+  }
+
+  handlePageType = (currentCmp) => {
+    this.setState(
+      {currentCmp : currentCmp}
+    );
+  }
+
+
   render() {
+    const {currentCmp } = this.state;
+
+    if (currentCmp === 'login') {
+      return <LoginTemplate handlePageType = {this.handlePageType}/>;
+    }
     return (
       <TodosManager></TodosManager>
     );

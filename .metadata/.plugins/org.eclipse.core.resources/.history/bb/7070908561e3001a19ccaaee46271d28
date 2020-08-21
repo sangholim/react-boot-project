@@ -1,0 +1,29 @@
+package com.spa.all.user.web;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.RequestPredicates;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.spa.all.config.RouteHandler;
+
+@Configuration
+public class UserRouteConfig {
+
+    
+    @Bean
+    public RouterFunction<ServerResponse> userRouteInit(RouteHandler handler) {
+	UserHandler userHandler = (UserHandler) handler;
+
+	return RouterFunctions
+		.route(
+			RequestPredicates.GET("/insertUser").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+			userHandler::insertUser)
+		.andRoute(
+			RequestPredicates.GET("/deleteUser").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+			userHandler::deleteUser);
+    }
+}

@@ -7,3 +7,11 @@ id bigint(20) not null auto_increment,
 text varchar(255) default '',
 primary key(id)
 );
+-- user table 생성
+create table user (
+id bigint(20) not null auto_increment,
+username varchar(255) default '',
+password varchar(255) default '',
+primary key(id),
+UNIQUE (ID)
+);

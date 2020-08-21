@@ -6,13 +6,11 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.spa.all.config.RouteHandler;
 import com.spa.all.config.dbc.MysqlConfig;
 import com.spa.all.todos.sql.TodosQueryContainer;
 
@@ -20,8 +18,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
-@Scope(value = "prototype")
-public class TodosHandler implements RouteHandler {
+public class TodosHandler {
 
     @Autowired(required = false)
     private MysqlConfig mysqlConfig;
@@ -49,14 +46,15 @@ public class TodosHandler implements RouteHandler {
     public Mono<ServerResponse> insertTodo(ServerRequest request) {
 	Optional<String> text = request.queryParam("text");
 	try {
-		String decodeString = URLDecoder.decode(text.get(), "UTF-8");
-		Mono<Integer> then = mysqlConfig.createClient().insert().into("todos").value("text", decodeString)
-			.map(r -> r.get(0, Integer.class)).one();
-		// Handler 결과를 제대로 받지 못하면 ex) NPE...., 쿼리 실행되지 않음..
-		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(then, Integer.class);
-			    
+	    String decodeString = URLDecoder.decode(text.get(), "UTF-8");
+	    Mono<Integer> then = mysqlConfig.createClient().insert().into("todos").value("text", decodeString)
+		    .map(r -> r.get(0, Integer.class)).one();
+	    // Handler 결과를 제대로 받지 못하면 ex) NPE...., 쿼리 실행되지 않음..
+	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(then, Integer.class);
+
 	} catch (Exception e) {
-	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(Flux.just("Invalid Data"), String.class); 
+	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(Flux.just("Invalid Data"),
+		    String.class);
 	}
 
     }

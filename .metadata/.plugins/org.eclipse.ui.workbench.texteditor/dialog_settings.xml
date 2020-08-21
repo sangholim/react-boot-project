@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="UserHa"/>
 			<item value=" "/>
 			<item value="spring"/>
 			<item value=".."/>
@@ -22,7 +23,6 @@
 			<item value="sign_up"/>
 			<item value="cafeBoard"/>
 			<item value="list.j"/>
-			<item value="json"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
