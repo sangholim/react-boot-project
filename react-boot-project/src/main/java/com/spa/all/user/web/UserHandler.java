@@ -26,16 +26,16 @@ public class UserHandler {
      * @param request
      * @return
      */
-    public Mono<ServerResponse> insertUser(ServerRequest request) {
+    public Mono<ServerResponse> register(ServerRequest request) {
 	// get User From mono
 	Mono<User> createUser = request.bodyToMono(User.class);
 	Mono<String> result = createUser.flatMap(user -> {
 	    DatabaseClient client = mysqlConfig.createClient();
 	    return client.execute(UserQueryContainer.getUser).bind("username", user.getUsername()).fetch().one()
-		    .flatMap(m -> Mono.just("500. Already Registered Exist User")).switchIfEmpty(
-			    client.insert().into(User.class).using(user).map(r -> "200 Success Create User").one());
+		    .flatMap(m -> Mono.just("400. Already Registered Exist User")).switchIfEmpty(
+			    client.insert().into(User.class).using(user).map(r -> "200. Success User Register").one());
 
-	}).defaultIfEmpty("Empty User Info");
+	}).defaultIfEmpty("400. Empty User Info");
 
 	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(result, Object.class);
 

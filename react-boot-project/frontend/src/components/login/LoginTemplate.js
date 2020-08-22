@@ -6,7 +6,7 @@ class LoginTemplate extends Component {
   // 초기화
   state = {};
 
-  // subutton 누르면 로그인 처리가 되고 todos 페이지를 뿌리도록 처리
+  // 로그인후 todos 페이지 이동
   doLogin = async () => {
     // 유저정보 체크
     const {user} = this.state;
@@ -32,11 +32,18 @@ class LoginTemplate extends Component {
       return;
     }
 
-    // console.log(this.props);
-    // 로그인 검사 로직을 bacekEnd에서 검사받는다..
     // 성공시 todos UI 보여주게 state 변경후, App Component에게 전달
+    alert("로그인 성공하였습니다.");
     this.props.handlePageType('todos');
   };
+
+  // 회워가입 페이지 이동
+  doReister = () => {
+    this.props.handlePageType('userRegister');
+  };
+
+
+
 
   doChange = (e) => {
     // state -> user 아래의 변수에 값 할당
@@ -71,8 +78,9 @@ class LoginTemplate extends Component {
         <h1>Login</h1>
     		<input type="text" name="user.username" placeholder="Username" onChange={this.doChange}/>
 				<input type="password" name="user.password" placeholder="Password" onChange={this.doChange}/>
-        <input type="submit" onClick={this.doLogin}/>
-		   </main>
+        <input value="로그인" className="doLogin" type="submit" onClick={this.doLogin}/>
+        <input value="회원가입" className="register" type="submit" onClick={this.doReister}/>
+      </main>
 
     );
   }

@@ -15,14 +15,11 @@ public class UserRouteConfig {
     public RouterFunction<ServerResponse> userRouteInit(UserHandler userHandler) {
 
 	return RouterFunctions
-		.route(RequestPredicates.POST("/insertUser").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
-			userHandler::insertUser)
-		.andRoute(
-			RequestPredicates.GET("/deleteUser").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+		.route(RequestPredicates.POST("/deleteUser").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 			userHandler::deleteUser)
-		.andRoute(
-			RequestPredicates.POST("/login").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+		.andRoute(RequestPredicates.POST("/login").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 			userHandler::login)
-		;
+		.andRoute(RequestPredicates.POST("/register").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+			userHandler::register);
     }
 }

@@ -8,6 +8,7 @@
 import React, { Component} from 'react';
 import TodosManager from './components/todos/TodosManager'
 import LoginTemplate from './components/login/LoginTemplate'
+import UserRegisterTemplate from './components/userRegister/UserRegisterTemplate'
 
 class App extends Component {
 
@@ -28,6 +29,10 @@ class App extends Component {
     if (currentCmp === 'login') {
       return <LoginTemplate handlePageType = {this.handlePageType}/>;
     }
+    if (currentCmp === 'userRegister') {
+      return <UserRegisterTemplate handlePageType = {this.handlePageType}/>;
+    }
+
     return (
       <TodosManager></TodosManager>
     );
