@@ -1,0 +1,110 @@
+package com.spa.all.user.web;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.r2dbc.core.DatabaseClient;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.spa.all.config.dbc.MysqlConfig;
+import com.spa.all.user.params.User;
+import com.spa.all.user.sql.UserQueryContainer;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Component
+public class UserHandler {
+
+    @Autowired
+    private MysqlConfig mysqlConfig;
+
+    /**
+     * user 추가 [단일]
+     * 
+     * @param request
+     * @return
+     */
+    public Mono<ServerResponse> insertUser(ServerRequest request) {
+	// get User From mono
+	Mono<User> createUser = request.bodyToMono(User.class);
+	try {
+	    Mono<Object> result = createUser.flatMap(user -> {
+		DatabaseClient client = mysqlConfig.createClient();
+		return client.execute(UserQueryContainer.getUser).bind("username", user.getUsername()).fetch().one()
+			.flatMap(m -> Mono.just("500. Already Registered Exist User"))
+			.switchIfEmpty(client.insert().into(User.class).using(user).map(r -> Mono.just("200 Success Create User")))
+			
+			/*
+			.switchIfEmpty(client.insert().into(User.class).using(user).map(r -> {
+			    Map<String, Object> insertMap = new HashMap<>();
+			    insertMap.put("result",r.get(0));
+			    //r.get(0);
+			    return insertMap;
+			}).one());
+			*/
+			/*
+			.flatMap(m -> {
+			    if (!m.isEmpty()) {
+				return Mono.just("Exist User");
+			    }
+			    return client.insert().into(User.class).using(user).map(r -> r.get(0)).one();
+			});
+			*/
+	    });
+	    
+	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(result, Object.class);
+
+	} catch (Exception e) {
+	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(Mono.just("Invalid User Data"),
+		    String.class);
+	}
+    }
+
+    /**
+     * 로그인하기
+     * 
+     * @param request
+     * @return
+     */
+    public Mono<ServerResponse> login(ServerRequest request) {
+	// get User From mono
+	Mono<User> createUser = request.bodyToMono(User.class);
+	Mono<Object> result = createUser.flatMap(user -> {
+	    DatabaseClient client = mysqlConfig.createClient();
+	    // 첫번째 flatMap에 대한 반환값
+	    return client.execute(UserQueryContainer.getMatchUser).bind("username", user.getUsername())
+		    .bind("password", user.getPassword()).fetch().one().flatMap(m -> {
+			// return : 2번쨰 flatMap에 대한 반환ㄱ밧
+			if (!m.isEmpty()) {
+			    return Mono.just("250 OK. Correct User Info");
+			}
+			return Mono.just("400 InValid Usr Info");
+		    });
+	});
+
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(result, Object.class);
+
+    }
+
+    /**
+     * user 삭제
+     * 
+     * @param request
+     * @return
+     */
+    public Mono<ServerResponse> deleteUser(ServerRequest request) {
+	/*
+	 * Optional<String> id = request.queryParam("id"); Mono<Integer> mono =
+	 * mysqlConfig.createClient().execute(TodosQueryContainer.delTodo).bind("id",
+	 * id.get()) .fetch().rowsUpdated();
+	 */
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(Flux.just("Invalid Data"),
+		String.class);
+    }
+
+}

@@ -29,24 +29,40 @@ public class UserHandler {
     public Mono<ServerResponse> insertUser(ServerRequest request) {
 	// get User From mono
 	Mono<User> createUser = request.bodyToMono(User.class);
-	try {
-	    Mono<Object> result = createUser.flatMap(user -> {
-		DatabaseClient client = mysqlConfig.createClient();
-		return client.execute(UserQueryContainer.getUser).bind("username", user.getUsername()).fetch().first()
-			.flatMap(m -> {
-			    if (!m.isEmpty()) {
-				return Mono.just("Exist User");
-			    }
-			    return client.insert().into(User.class).using(user).map(r -> r.get(0)).one();
-			});
-	    });
-	    
-	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(result, Object.class);
+	Mono<String> result = createUser.flatMap(user -> {
+	    DatabaseClient client = mysqlConfig.createClient();
+	    return client.execute(UserQueryContainer.getUser).bind("username", user.getUsername()).fetch().one()
+		    .flatMap(m -> Mono.just("500. Already Registered Exist User")).switchIfEmpty(
+			    client.insert().into(User.class).using(user).map(r -> "200 Success Create User").one());
 
-	} catch (Exception e) {
-	    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(Mono.just("Invalid User Data"),
-		    String.class);
-	}
+	}).defaultIfEmpty("Empty User Info");
+
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(result, Object.class);
+
+    }
+
+    /**
+     * 로그인하기
+     * 
+     * @param request
+     * @return
+     */
+    public Mono<ServerResponse> login(ServerRequest request) {
+
+	// get User From mono
+	Mono<User> createUser = request.bodyToMono(User.class);
+	Mono<String> result = createUser.flatMap(user -> {
+	    if (user.getUsername() == null || user.getPassword() == null) {
+		// user가 없을떄 수행하지 않음
+		return Mono.empty();
+	    }
+	    DatabaseClient client = mysqlConfig.createClient();
+	    return client.execute(UserQueryContainer.getMatchUser).bind("username", user.getUsername())
+		    .bind("password", user.getPassword()).fetch().one().flatMap(m -> Mono.just("200. Success Login"));
+	}).defaultIfEmpty("400. Fail Login");
+
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(result, Object.class);
+
     }
 
     /**

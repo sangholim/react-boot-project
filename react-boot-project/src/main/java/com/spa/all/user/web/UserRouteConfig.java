@@ -19,6 +19,10 @@ public class UserRouteConfig {
 			userHandler::insertUser)
 		.andRoute(
 			RequestPredicates.GET("/deleteUser").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
-			userHandler::deleteUser);
+			userHandler::deleteUser)
+		.andRoute(
+			RequestPredicates.POST("/login").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+			userHandler::login)
+		;
     }
 }
