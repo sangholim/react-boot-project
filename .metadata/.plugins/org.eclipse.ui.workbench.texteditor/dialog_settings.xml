@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="맵"/>
 			<item value="UserHa"/>
 			<item value=" "/>
 			<item value="spring"/>
@@ -22,7 +23,6 @@
 			<item value="cafeLevel"/>
 			<item value="sign_up"/>
 			<item value="cafeBoard"/>
-			<item value="list.j"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

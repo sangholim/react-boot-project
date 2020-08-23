@@ -1,0 +1,41 @@
+package com.spa.all.user.repo;
+
+
+import org.springframework.data.r2dbc.repository.Query;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+
+import com.spa.all.user.params.User;
+import com.spa.all.user.sql.UserQueryContainer;
+
+import reactor.core.publisher.Mono;
+
+public interface UserRepository extends R2dbcRepository<User, Long>{
+
+    /**
+     * user 질의
+     * 
+     * @param request
+     * @return
+     */
+    @Query(UserQueryContainer.getUser)
+    public Mono<User> getUser(User usere);
+
+    /**
+     * 유저 매칭
+     * 
+     * @param request
+     * @return
+     */
+    @Query(UserQueryContainer.getMatchUser)
+    public Mono<User> matchUser(User user);
+
+    /**
+     * 유저 추가
+     * 
+     * @param request
+     * @return
+     */
+    @Query(UserQueryContainer.addUser)
+    public Mono<User> addUser(User user);
+
+}

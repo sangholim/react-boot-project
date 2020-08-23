@@ -1,0 +1,28 @@
+package com.spa.all.config.session;
+
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.session.MapSession;
+import org.springframework.session.ReactiveMapSessionRepository;
+import org.springframework.session.ReactiveSessionRepository;
+import org.springframework.session.config.annotation.web.server.EnableSpringWebSession;
+
+import reactor.core.publisher.Mono;
+
+@Configuration
+@EnableSpringWebSession
+public class InMemoryConfig {
+    
+    private ReactiveMapSessionRepository reactiveSessionRepository = new ReactiveMapSessionRepository(new ConcurrentHashMap<>());
+
+    public ReactiveMapSessionRepository getReactiveSessionRepository() {
+	
+        return reactiveSessionRepository;
+    }
+    
+    public Mono<MapSession> createSession () { 
+	return reactiveSessionRepository.createSession();;
+    }
+}

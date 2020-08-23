@@ -1,11 +1,34 @@
 package com.spa.all.user.params;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("user")
 public class User {
 
+    @Id
     private long id;
-
+    
+    @Column("username")
     private String username;
+    @Column("password")
     private String password;
+
+    public User() {
+
+    }
+
+    public User (long id, String username, String password) {
+	this.id = id;
+	this.username = username;
+	this.password = password;
+    }
+    
+    public User(String username, String password) {
+	this.username = username;
+	this.password = password;
+    }
 
     public long getId() {
 	return id;

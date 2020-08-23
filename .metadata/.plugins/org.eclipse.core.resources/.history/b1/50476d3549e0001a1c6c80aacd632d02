@@ -1,7 +1,0 @@
-package com.spa.all.todos.sql;
-
-public class TodosQueryContainer {
-
-    public static final String getAllTodos = "SELECT * from todos";
-    
-}

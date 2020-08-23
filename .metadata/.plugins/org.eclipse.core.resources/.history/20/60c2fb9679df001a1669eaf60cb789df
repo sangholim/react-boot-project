@@ -1,2 +1,0 @@
-spring.r2dbc.url=r2dbc:mysql://root:root@127.0.0.1:3306/bookkeeping
-

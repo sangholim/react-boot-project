@@ -1,6 +1,0 @@
-package com.spa.all.config.dbc;
-
-public interface dataBaseConfig {
-
-    public void setDataBaseConfig ();
-}

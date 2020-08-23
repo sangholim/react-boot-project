@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @Configuration
 public class TodosRouteConfig {
  
-    @Bean
+    //@Bean
     public RouterFunction<ServerResponse> todosRouteInit(TodosHandler handler) {
 	
 	return RouterFunctions

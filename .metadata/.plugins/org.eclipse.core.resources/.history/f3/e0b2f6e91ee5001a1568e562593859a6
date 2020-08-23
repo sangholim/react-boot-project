@@ -1,0 +1,5 @@
+package com.spa.all.user.repo;
+
+public class UserRepository {
+
+}
