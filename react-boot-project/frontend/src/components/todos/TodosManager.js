@@ -29,17 +29,27 @@ class TodosManager extends Component {
     try {
           const {  input, todos }  = this.state;
           //backEnd에 todo 추가 요청
-          const response = await axios.get( '/insertTodo', {
-            params: {
-              text : input
+          const response = await axios ({
+            method : 'POST',
+            url : '/insertTodo',
+            header : {
+              'Content-Type': 'application/json'
+            },
+            data : {
+              "text" : input
             }
-          } );
+          });
+          const {data} = response;
+          if (data.result.indexOf("200") === -1) {
+            alert("추가 작업 실패");
+            return;
+          }
           // 요청후 state에 추가
           this.setState({
             input: '', // value 초기화
             todos: todos.concat({
               // id는 db에서 생성
-              id : response.data,
+              id : data.id,
               text: input,
               checked: false
             })
@@ -54,11 +64,18 @@ class TodosManager extends Component {
     try {
       const { todos } = this.state;
       //backEnd에 todo를 제거 요청
-      const response = await axios.get( '/deleteTodo', {
-        params: {
-          id : id,
+      const response = await axios ({
+        method : 'POST',
+        url : '/deleteTodo',
+        header : {
+          'Content-Type': 'application/json'
+        },
+        data : {
+          "id" : id
         }
       });
+      const {data} = response;
+
       // state에서 제거된 todo를 없앤후 재배열화
       this.setState({
         todos: todos.filter(todo => todo.id !== id)
@@ -77,8 +94,17 @@ class TodosManager extends Component {
 
   //로딩 //예제로 쓸 데이터
   loadingData = async () => {
+
     try {
-      const response = await axios.get( '/todosList' );
+      const response = await axios ({
+        method : 'POST',
+        url : '/todosList',
+        header : {
+          'Content-Type': 'application/json'
+        },
+        data : {}
+      });
+
       this.setState(
         {
           todos: response.data,

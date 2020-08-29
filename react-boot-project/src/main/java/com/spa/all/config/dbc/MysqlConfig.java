@@ -1,20 +1,18 @@
 package com.spa.all.config.dbc;
 
+import javax.annotation.PostConstruct;
+
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
 import org.springframework.data.r2dbc.core.DatabaseClient;
-import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 import io.r2dbc.spi.Connection;
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 
 @Configuration
-@EnableR2dbcRepositories
-public class MysqlConfig extends AbstractR2dbcConfiguration{
+public class MysqlConfig {
 
     @Value("${spring.r2dbc.url}")
     private String url;
@@ -39,14 +37,16 @@ public class MysqlConfig extends AbstractR2dbcConfiguration{
 
     private ConnectionFactory connectionFactory;
 
+    private DatabaseClient client;
     
-    @Bean
-    public ConnectionFactory connectionFactory() {
+    @PostConstruct
+    public void setMysqlConfig () {
 	String[] urlComps = url.split("//");
 	ConnectionFactory connectionFactory = ConnectionFactories
 		.get(urlComps[0] + "//" + username + ':' + password + '@' + urlComps[1]);
 	this.connectionFactory = connectionFactory;
-	return connectionFactory;
+	this.client = DatabaseClient.create(connectionFactory);
+	
     }
 
     /**
@@ -59,6 +59,6 @@ public class MysqlConfig extends AbstractR2dbcConfiguration{
     }
 
     public DatabaseClient createClient() {
-	return null;
+	return this.client;
     }
 }

@@ -1,0 +1,13 @@
+package com.spa.all.todos.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.spa.all.config.dbc.MysqlConfig;
+
+@RestController
+public class TodosController {
+
+    @Autowired private MysqlConfig mysqlConf;
+    
+}

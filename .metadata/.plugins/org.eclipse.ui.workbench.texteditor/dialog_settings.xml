@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="findBy"/>
 		<list key="findhistory">
+			<item value="findby"/>
+			<item value="databaseClient"/>
 			<item value="맵"/>
 			<item value="UserHa"/>
 			<item value=" "/>
@@ -21,8 +23,6 @@
 			<item value="getCafeQuery"/>
 			<item value="#"/>
 			<item value="cafeLevel"/>
-			<item value="sign_up"/>
-			<item value="cafeBoard"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

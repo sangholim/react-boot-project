@@ -1,7 +1,0 @@
-package com.spa.all.user.sql;
-
-public class UserQueryContainer {
-    
-    public static final String addUser = "INSERT INTO user values (null, :username, :password)";
-    
-}

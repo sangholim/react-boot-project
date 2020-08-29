@@ -1,7 +1,0 @@
-r2dbc.db.driver = "mysql"
-r2dbc.db.protocol = "mysql"
-r2dbc.db.host = "localhost"
-r2dbc.db.port = 3306
-r2dbc.db.user = "root"
-r2dbc.db.password =1234
-r2dbc.db.dbname = "todos"

@@ -1,9 +1,0 @@
-package com.spa.all.config.dbc;
-
-@Getter
-@Setter
-@Component
-@ConfigurationProperties("myHost")
-public class R2dbcConfig {
-
-}

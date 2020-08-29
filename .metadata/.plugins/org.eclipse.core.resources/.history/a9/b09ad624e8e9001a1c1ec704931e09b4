@@ -1,0 +1,5 @@
+package com.spa.all.config.filter;
+
+public class LoginWebFilter {
+
+}

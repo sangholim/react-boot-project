@@ -27,7 +27,7 @@ class UserRegisterTemplate extends Component {
       }
     });
 
-    if (response.data.indexOf("400") > -1) {
+    if (response.data.result.indexOf("400") > -1) {
       alert("회원가입 실패하였습니다.");
       return;
     }

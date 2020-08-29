@@ -1,0 +1,77 @@
+package com.spa.all.todos.web;
+
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.r2dbc.core.DatabaseClient;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.spa.all.config.dbc.MysqlConfig;
+import com.spa.all.todos.params.Todo;
+import com.spa.all.todos.sql.TodosQueryContainer;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@RestController
+public class TodosController {
+
+    @Autowired private MysqlConfig mysqlConf;
+
+    /**
+     * todosList 가져오는 query 반드시 Flux Class로 반환
+     * 
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/todosList", consumes = "application/json", produces = "application/json")
+    public Flux<Map<String, Object>> todosList(ServerRequest request) {
+	DatabaseClient client = mysqlConf.createClient();
+
+	return client.execute(TodosQueryContainer.getAllTodos).fetch().all();
+    }
+
+    /**
+     * todo 추가 [단일]
+     * 
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/insertTodo", consumes = "application/json", produces = "application/json")
+    public Mono<Map<String, Object>> insertTodo(@RequestBody Todo todo) {
+	DatabaseClient client = mysqlConf.createClient();
+	Map<String, Object> result = new HashMap<>();
+	result.put("result", "400 Internal Error");
+
+	// Optional<String> text = request.queryParam("text");
+	return client.insert().into("todos").value("text", todo.getText()).fetch().rowsUpdated().map(r -> {
+	    result.put("result", "200 Succes Created Todo");
+	    return result;
+	}).defaultIfEmpty(result);
+
+    }
+
+    /**
+     * todo 삭제
+     * 
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/deleteTodo", consumes = "application/json", produces = "application/json")
+    public Mono<Map<String, Object>> deleteTodo(ServerRequest request) {
+	Optional<String> id = request.queryParam("id");
+	Mono<Integer> mono = mysqlConfig.createClient().execute(TodosQueryContainer.delTodo).bind("id", id.get())
+		.fetch().rowsUpdated();
+
+	return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(mono, Integer.class);
+    }
+
+}

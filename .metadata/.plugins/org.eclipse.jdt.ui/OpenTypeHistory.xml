@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.config.dbc{MysqlConfig.java[MysqlConfig" modifiers="1" timestamp="1598186437005"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.web{TodosRouteConfig.java[TodosRouteConfig" modifiers="1" timestamp="1598159163438"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.config.dbc{MysqlConfig.java[MysqlConfig" modifiers="1" timestamp="1598694595868"/>
 <typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.params{Todo.java[Todo" modifiers="1" timestamp="1597894332531"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.web{TodosHandler.java[TodosHandler" modifiers="1" timestamp="1597981912964"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.web{UserController.java[UserController" modifiers="1" timestamp="1598190180268"/>
 <typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.params{User.java[User" modifiers="1" timestamp="1598189351122"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.sql{UserQueryContainer.java[UserQueryContainer" modifiers="1" timestamp="1598189723588"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.sql{UserQueryContainer.java[UserQueryContainer" modifiers="1" timestamp="1598677765669"/>
+<typeInfo handle="=react-boot-project/C:\/WORKSPACEK\/Pro1\/repo\/org\/springframework\/data\/spring-data-r2dbc\/1.0.0.RELEASE\/spring-data-r2dbc-1.0.0.RELEASE.jar&lt;org.springframework.data.r2dbc.repository.support(SimpleR2dbcRepository.class[SimpleR2dbcRepository" modifiers="33" timestamp="1598172289150"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.web{TodosController.java[TodosController" modifiers="1" timestamp="1598694552511"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.web{UserController.java[UserController" modifiers="1" timestamp="1598694569355"/>
 </typeInfoHistroy>

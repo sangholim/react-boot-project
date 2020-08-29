@@ -25,16 +25,17 @@ class LoginTemplate extends Component {
         "username" : user.username,
         "password" : user.password
       }
+    }).then (response => {
+      if (response.data.result.indexOf("400") != -1) {
+        alert("로그인에 실패하였습니다.");
+        return;
+      }
+
+      // 성공시 todos UI 보여주게 state 변경후, App Component에게 전달
+      alert("로그인 성공하였습니다.");
+      this.props.handlePageType('todos');
     });
 
-    if (response.data.indexOf("400") > -1) {
-      alert("로그인에 실패하였습니다.");
-      return;
-    }
-
-    // 성공시 todos UI 보여주게 state 변경후, App Component에게 전달
-    alert("로그인 성공하였습니다.");
-    this.props.handlePageType('todos');
   };
 
   // 회워가입 페이지 이동
