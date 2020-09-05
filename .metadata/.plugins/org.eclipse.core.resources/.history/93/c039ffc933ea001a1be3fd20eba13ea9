@@ -1,0 +1,6 @@
+package com.spa.all.config.security;
+
+public class SecurityConfig {
+
+    public static final key = "react-boot";
+}

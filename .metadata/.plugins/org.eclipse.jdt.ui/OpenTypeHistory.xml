@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.config.dbc{MysqlConfig.java[MysqlConfig" modifiers="1" timestamp="1598694595868"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.config.dbc{MysqlConfig.java[MysqlConfig" modifiers="1" timestamp="1598697161251"/>
 <typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.params{Todo.java[Todo" modifiers="1" timestamp="1597894332531"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.params{User.java[User" modifiers="1" timestamp="1598189351122"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.params{User.java[User" modifiers="1" timestamp="1598733312750"/>
 <typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.sql{UserQueryContainer.java[UserQueryContainer" modifiers="1" timestamp="1598677765669"/>
 <typeInfo handle="=react-boot-project/C:\/WORKSPACEK\/Pro1\/repo\/org\/springframework\/data\/spring-data-r2dbc\/1.0.0.RELEASE\/spring-data-r2dbc-1.0.0.RELEASE.jar&lt;org.springframework.data.r2dbc.repository.support(SimpleR2dbcRepository.class[SimpleR2dbcRepository" modifiers="33" timestamp="1598172289150"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.web{TodosController.java[TodosController" modifiers="1" timestamp="1598694552511"/>
-<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.web{UserController.java[UserController" modifiers="1" timestamp="1598694569355"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.todos.web{TodosController.java[TodosController" modifiers="1" timestamp="1598698956040"/>
+<typeInfo handle="=react-boot-project/src\/main\/java&lt;com.spa.all.user.web{UserController.java[UserController" modifiers="1" timestamp="1599274632884"/>
 </typeInfoHistroy>

@@ -1,0 +1,9 @@
+package com.spa.all.config.security;
+
+public class SecurityConfig {
+
+    public static final String public_key = "react-boot-public";
+
+    public static final String private_key = "react-boot-private";
+    
+}

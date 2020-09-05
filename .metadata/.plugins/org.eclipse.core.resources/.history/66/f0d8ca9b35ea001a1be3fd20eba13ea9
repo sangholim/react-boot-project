@@ -1,0 +1,44 @@
+package com.spa.all.config.security;
+
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.util.HashMap;
+
+import io.netty.handler.codec.base64.Base64;
+
+public class SecurityConfig {
+
+    public static final String PUBLIC_KEY = "react-boot-public";
+
+    public static final String PRIVATE_KEY = "react-boot-private";
+    
+    private static final int KEY_SIZE = 2048;
+    /**
+     * 키페어 생성
+     */
+    public static HashMap<String, String> createKeypairAsString() {
+        HashMap<String, String> stringKeypair = new HashMap<>();
+        try {
+            SecureRandom secureRandom = new SecureRandom();
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(KEY_SIZE, secureRandom);
+            KeyPair keyPair = keyPairGenerator.genKeyPair();
+
+            PublicKey publicKey = keyPair.getPublic();
+            PrivateKey privateKey = keyPair.getPrivate();
+
+           // String stringPublicKey = Base64.getEncoder().encodeToString(publicKey.getEncoded());
+           // String stringPrivateKey = Base64.getEncoder().encodeToString(privateKey.getEncoded());
+
+            stringKeypair.put("publicKey", PUBLIC_KEY);
+            stringKeypair.put("privateKey", stringPrivateKey);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stringKeypair;
+    }
+}

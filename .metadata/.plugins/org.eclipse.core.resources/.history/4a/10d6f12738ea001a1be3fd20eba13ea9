@@ -1,0 +1,38 @@
+package com.spa.all.config.filter;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.server.WebFilter;
+import org.springframework.web.server.WebFilterChain;
+
+import com.spa.all.config.security.SecurityConfig;
+
+import reactor.core.publisher.Mono;
+
+@Component
+public class LoginWebFilter implements WebFilter{
+    
+    private final String X_PK = "x-public-key";
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+	// TODO Auto-generated method stub
+	exchange.getResponse().getHeaders().add("Access-Control-Allow-Headers", "*");
+	
+	return exchange.getSession().map(session -> {
+	    ServerHttpResponse response = exchange.getResponse();
+	    if (session.getAttribute("userInfo") == null) {
+		response.setStatusCode(HttpStatus.SEE_OTHER);
+                response.getHeaders().add(HttpHeaders.LOCATION, "/");  //리다이렉션 주소 
+                return response.setComplete();
+    	    } else {
+    		response.getHeaders().add(X_USERINFO, SecurityConfig.KEYPAIR.get("publickey"));  //키 인증값
+            }
+	    return chain.filter(exchange);
+	}).flatMap(args -> Mono.from(args)); 
+    }
+
+    
+}

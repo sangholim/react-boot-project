@@ -1,0 +1,78 @@
+package com.spa.all.user.web;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.r2dbc.core.DatabaseClient;
+import org.springframework.http.server.ServerHttpRequest;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.WebSession;
+
+import com.spa.all.config.dbc.MysqlConfig;
+import com.spa.all.user.params.User;
+import com.spa.all.user.sql.UserQueryContainer;
+
+import io.netty.handler.codec.http.HttpRequest;
+import reactor.core.publisher.Mono;
+
+@RestController
+public class UserController {
+
+    @Autowired
+    private MysqlConfig mysqlConf;
+    
+    
+    /**
+     * user 추가 [단일]
+     * 
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/register", consumes = "application/json", produces = "application/json")
+    public Mono<Map<String, Object>> register(@RequestBody User user) {
+	Map<String, Object> result = new HashMap<>();
+	result.put("result", "400 Internal Error");
+	DatabaseClient client = mysqlConf.createClient();
+
+	// Mono에 method는 callback pattern이기때문에.. 실제로 method가 처리가 늦게되어버리면 .. 지역변수가 값을 받지
+	// 못한다.
+
+	return client.execute(UserQueryContainer.getUser).bind("username", user.getUsername()).fetch().one().map(u -> {
+	    result.put("result", "400 exist User");
+	    return result;
+	}).switchIfEmpty(client.insert().into(User.class).using(user).fetch().one().map(u -> {
+	    result.put("result", "200 Success Create User");
+	    return result;
+	}));
+
+    }
+
+    /**
+     * 로그인하기
+     * 
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
+    public Mono<Map<String, Object>> login(@RequestBody User user, WebSession session, ServerHttpRequest request) {
+
+	DatabaseClient client = mysqlConf.createClient();
+	Map<String, Object> result = new HashMap<>();
+	result.put("result", "400 Fail Login");
+
+	// 유저가 존재하면 fail 처리
+	return client.execute(UserQueryContainer.getMatchUser).bind("username", user.getUsername())
+		.bind("password", user.getPassword()).fetch().one().map(u -> {
+		    result.put("result", "200 Success Login");
+		    String encodeData = request.getRemoteAddress().getHostName() + '-' + session.getId() + '-'
+			    + user.getUsername();
+		    session.getAttributes().putIfAbsent("userInfo", u);
+		    return result;
+		});
+
+    }
+
+}

@@ -1,0 +1,38 @@
+body, h1, h2, h3, h4, h5, h6, table, pre, xmp, plaintext, listing, input, textarea, select, button, a {
+    font-size: 12px;
+    color: #1c1c1c;
+    line-height: 1.25;
+    font-family: "Roboto", "Noto Sans", sans-serif;
+}
+
+html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, blockquote, form, fieldset,
+legend, menu, nav, section, hgroup, article, header, aside, footer, input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+}
+
+button, input, select, textarea, a {
+    vertical-align: middle;
+}
+
+img {
+    vertical-align: middle;
+}
+
+img, fieldset, button {
+    border: 0 none;
+}
+
+a {
+    color: #1c1c1c;
+    text-decoration: none;
+    background: none;
+}
+
+img, fieldset, button {
+    border: 0 none;
+}
+
+hr, caption, legend {
+    display: none;
+}

@@ -1,0 +1,215 @@
+.header {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    z-index: 100;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header .header_top_wrap {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .header_top {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.header .header_top .left {
+    width: 50%;
+    float: left;
+}
+
+.header .header_top .right {
+    width: 32%;
+    float: right;
+}
+
+.header .header_top:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.header .header_top .left ul li {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+.header .header_top .left ul li a {
+    color: #828282;
+    font-family: "Roboto", sans-serif;
+}
+
+.header .header_top .left ul:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.header .header_top .right ul li {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    background: url(/design/jogunshop/MakeshopRenewal/img/lnb_right_gb.gif) no-repeat right 48%;
+}
+
+.header .header_top .right ul li a {
+    color: #828282;
+    font-family: "Roboto", sans-serif;
+}
+
+.header .header_top:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.header_mid_wrap {
+    width: 100%;
+    height: 200px;
+}
+
+.header .header_mid {
+    width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.header .header_bot_wrap {
+    width: 100%;
+    height: 58px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .header_bot {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.header_bot_wrap .header_ani {
+    display: none;
+}
+
+.header .header_ani .header_ani_inner {
+    width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header .header_ani .right {
+    width: 100px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.header .header_ani .right ul li.icon {
+    background: none;
+}
+
+.header .header_ani .right ul li {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    background: url(/design/jogunshop/MakeshopRenewal/img/lnb_right_gb.gif) no-repeat right 48%;
+}
+
+.header .header_ani .right ul li.icon a {
+    height: 18px;
+}
+
+.header .header_ani .right ul li.icon:last-child {
+    padding: 0px;
+}
+
+
+.header .header_bot .gnb .depth1 {
+    position: relative;
+    padding: 0 23.6px;
+    float: left;
+    height: 58px;
+    line-height: 58px;
+    cursor: pointer;
+}
+
+.header .header_bot .gnb .depth1 a {
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+.header .header_bot ul li .style{
+    overflow: 'hidden';
+    height: '150px';
+    display: 'none';
+    margin-top: '0px';
+    margin-bottom: '0px';
+    padding-top: '5px';
+    padding-bottom: '15px'
+}
+
+.header .header_bot .gnb .depth1 a {
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+.header .header_bot .gnb .depth1.big a {
+    font-weight: bold;
+    --color: #f97413;
+}
+
+.header .header_bot .gnb .depth1.orange a {
+    font-weight: bold;
+    color: #f97413;
+}
+
+.header .header_bot .gnb .depth1.search {
+    width: 60px;
+    height: 58px;
+    padding: 0px;
+    text-align: center;
+    line-height: 58px;
+    background: #f3f3f3;
+}
+
+.header .header_bot .gnb .depth1.search .searchbar {
+    width: 345px;
+    height: 65px;
+    background: #f3f3f3;
+    opacity: 0.9;
+    display: none;
+    position: absolute;
+    top: 58px;
+    right: 0px;
+    padding: 10px;
+}
+
+.header .header_bot .gnb .depth1.search .searchbar .MS_search_word {
+    width: 300px;
+    height: 65px;
+    border: none;
+    background: none;
+    line-height: 65px;
+    font-size: 14px;
+}
+
+.header .header_bot .gnb:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+li {
+    list-style: none;
+}
