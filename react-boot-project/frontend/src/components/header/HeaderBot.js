@@ -44,7 +44,7 @@ class HeaderBot extends Component {
               {/*TOP*/}
               <li className="depth1">
                 <a href="/shop/shopbrand.html?xcode=078&amp;type=Y">TOP</a>
-                <ul className="depth2 style">
+                <ul className="depth2 top">
                   <li><a href="/shop/shopbrand.html?xcode=078&amp;type=N&amp;mcode=009">맨투맨&amp;후드티</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=078&amp;type=N&amp;mcode=011">니트</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=078&amp;type=N&amp;mcode=004">긴팔티</a></li>
@@ -56,7 +56,7 @@ class HeaderBot extends Component {
               {/*PANTS*/}
               <li className="depth1">
                 <a href="/shop/shopbrand.html?xcode=081&amp;type=Y">PANTS</a>
-                <ul className="depth2">
+                <ul className="depth2 pants">
                   <li><a href="/shop/shopbrand.html?xcode=081&amp;type=N&amp;mcode=006">슬랙스</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=081&amp;type=N&amp;mcode=003">면바지</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=081&amp;type=N&amp;mcode=002">청바지</a></li>
@@ -67,7 +67,7 @@ class HeaderBot extends Component {
               {/*SHIRTS*/}
               <li className="depth1">
                 <a href="/shop/shopbrand.html?xcode=055&amp;typ">SHIRTS</a>
-                <ul className="depth2">
+                <ul className="depth2 shirts">
                   <li><a href="/shop/shopbrand.html?xcode=055&amp;type=N&amp;mcode=004">베이직</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=055&amp;type=N&amp;mcode=006">청남방</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=055&amp;type=N&amp;mcode=005">체크&amp;패턴</a></li>
@@ -78,7 +78,7 @@ class HeaderBot extends Component {
               <li className="depth1">
               {/*OUTER*/}
                 <a href="/shop/shopbrand.html?xcode=079&amp;type=Y">OUTER</a>
-                <ul className="depth2">
+                <ul className="depth2 outer">
                   <li><a href="/shop/shopbrand.html?xcode=079&amp;type=N&amp;mcode=004">패딩</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=079&amp;type=N&amp;mcode=002">코트</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=079&amp;type=N&amp;mcode=006">수트&amp;블레이져</a></li>
@@ -91,7 +91,7 @@ class HeaderBot extends Component {
               {/*SHOES*/}
               <li className="depth1">
                 <a href="/shop/shopbrand.html?xcode=066&amp;type=Y">SHOES</a>
-                <ul className="depth2">
+                <ul className="depth2 shoes">
                   <li><a href="/shop/shopbrand.html?xcode=066&amp;mcode=004&amp;type=Y">스니커즈</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=066&amp;mcode=007&amp;type=Y">로퍼&amp;구두</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=066&amp;mcode=005&amp;type=Y">키높이신발&amp;깔창</a></li>
@@ -102,7 +102,7 @@ class HeaderBot extends Component {
               {/*BAG*/}
               <li className="depth1">
                 <a href="/shop/shopbrand.html?xcode=070&amp;type=Y">BAG</a>
-                <ul className="depth2">
+                <ul className="depth2 bags">
                   <li><a href="/shop/shopbrand.html?xcode=070&amp;mcode=001&amp;type=Y">백팩</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=070&amp;mcode=002&amp;type=Y">토트&amp;숄더백</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=070&amp;mcode=003&amp;type=Y">크로스백</a></li>
@@ -114,7 +114,7 @@ class HeaderBot extends Component {
               {/*ACC*/}
               <li className="depth1">
                 <a href="/shop/shopbrand.html?xcode=080&amp;type=Y">ACC</a>
-                <ul className="depth2">
+                <ul className="depth2" style={{display: 'none'}}>
                   <li><a href="/shop/shopbrand.html?xcode=080&amp;mcode=005&amp;type=Y">양말&amp;넥타이</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=080&amp;mcode=003&amp;type=Y">모자</a></li>
                   <li><a href="/shop/shopbrand.html?xcode=080&amp;mcode=006&amp;type=Y">머플러&amp;장갑</a></li>

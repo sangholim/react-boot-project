@@ -148,14 +148,83 @@
     font-weight: 500;
 }
 
-.header .header_bot ul li .style{
-    overflow: 'hidden';
-    height: '150px';
-    display: 'none';
-    margin-top: '0px';
-    margin-bottom: '0px';
-    padding-top: '5px';
-    padding-bottom: '15px'
+.header .header_bot ul li .top{
+    overflow: hidden;
+    height: 150px;
+    display: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.header .header_bot ul li .pants{
+  display: none;
+  overflow: hidden;
+  height: 125px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.header .header_bot ul li .outer{
+  overflow: hidden;
+  height: 174px;
+  display: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.header .header_bot ul li .shoes{
+  overflow: hidden;
+  height: 100px;
+  display: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.header .header_bot ul li .bags{
+  overflow: hidden;
+  height: 100px;
+  display: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.header .header_bot ul li .shirts{
+  overflow: hidden;
+  height: 125px;
+  display: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.header .header_bot .gnb .depth1:nth-child(8) .depth2 {
+    left: -16px;
+}
+
+.header .header_bot .gnb .depth1.search {
+    width: 60px;
+    height: 58px;
+    padding: 0px;
+    text-align: center;
+    line-height: 58px;
+    background: #f3f3f3;
+}
+
+.header .header_bot .gnb:after {
+    display: block;
+    clear: both;
+    content: '';
 }
 
 .header .header_bot .gnb .depth1 a {

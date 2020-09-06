@@ -36,3 +36,144 @@ img, fieldset, button {
 hr, caption, legend {
     display: none;
 }
+
+select {
+    line-height: 18px;
+    font-size: 12px;
+    color: #1c1c1c;
+    /* font-family: Arial !important; */
+}
+
+
+#header, #layerWrap, #contentWrap, .ftLink .link, .footer {
+    position: relative;
+    width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer_inner {
+    width: 1300px;
+    margin: 50px auto 100px;
+}
+
+.contentWrapper {
+    position: relative;
+}
+
+.product-wrap {
+    margin: 0 auto;
+    position: relative;
+    width: 1300px;
+}
+
+.item-wrap {
+    overflow: hidden;
+    width: 1300px;
+}
+
+.cateTit {
+    position: relative;
+    text-align: center;
+    margin: 40px auto;
+}
+
+.cateTit h3 {
+    font-size: 26px;
+    color: #1c1c1c;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.item-wrap .item-cont {
+    width: 1300px;
+    *zoom: 1;
+}
+
+.item-wrap .item-cont .item-list {
+    margin-right: 20px;
+    float: left;
+    width: 308px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+.item-wrap .item-cont .item-list .thumb {
+    width: 308px;
+    overflow: hidden;
+}
+
+.item-wrap .item-cont .item-list .prd-info {
+    padding: 8px 0 35px;
+    overflow: hidden;
+    height: 140px;
+}
+
+.item-wrap .item-cont .item-list .prd-color {
+    text-align: left;
+}
+
+.item-wrap .item-cont .item-list .prd-color span {
+    border: 1px solid #ddd;
+    padding: 0px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    line-height: 10px;
+    text-align: center;
+}
+
+.item-wrap .item-cont .item-list .prd-name {
+    padding-top: 10px;
+}
+
+.item-wrap .item-cont .item-list .prd-name a {
+    display: block;
+    color: #1c1c1c;
+    line-height: 17px;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    text-align: left;
+}
+
+.item-wrap .item-cont .item-list .prd-price {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.item-wrap .item-cont .item-list .prd-price .left {
+    float: left;
+    width: 50%;
+}
+
+.item-wrap .item-cont .item-list .prd-price .price {
+    color: #1c1c1c;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.item-wrap .item-cont .item-list .prd-price .right {
+    float: right;
+    width: 50%;
+    text-align: right;
+    font-size: 11px;
+}
+
+.item-wrap .item-cont .item-list .prd-ico {
+    text-align: left;
+    margin-top: 5px;
+}
+
+.item-wrap .item-cont .item-list .prd-ico img:first-child {
+    margin: 0px 2px 0 0;
+}
+
+.item-wrap .item-cont .item-list .prd-preview {
+    display: none;
+}
+
+.item-wrap .item-cont .item-list .prd-preview a {
+    margin-left: 10px;
+    display: inline-block;
+}

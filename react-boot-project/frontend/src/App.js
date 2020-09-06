@@ -10,6 +10,8 @@ import TodosManager from './components/todos/TodosManager'
 //import LoginTemplate from './components/login/LoginTemplate'
 import UserRegisterTemplate from './components/userRegister/UserRegisterTemplate'
 import Header from './components/header/Header'
+import Content from './components/contents/Content'
+import Footer from './components/footer/Footer'
 
 class App extends Component {
 
@@ -37,19 +39,12 @@ class App extends Component {
 
   render() {
     return (
-      <Header></Header>
+      <div>
+        <Header></Header>
+        <Content></Content>
+        <Footer></Footer>
+      </div>
     );
-    /*
-    const {currentCmp } = this.state;
-
-    if (currentCmp === 'userRegister') {
-      return <UserRegisterTemplate handlePageType = {this.handlePageType}/>;
-    }
-
-    return (
-      <TodosManager></TodosManager>
-    );
-    */
   }
 }
 export default App;

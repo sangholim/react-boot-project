@@ -1,0 +1,26 @@
+.imgBanner {
+    margin: 60px auto;
+    position: relative;
+    width: 1300px;
+    overflow: hidden;
+}
+
+.imgBanner ul li {
+    padding-right: 10px;
+    float: left;
+}
+
+.imgBanner ul li a {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.imgBanner ul:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.nopd {
+    padding: 0 !important;
+}
